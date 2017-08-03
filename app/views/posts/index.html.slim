@@ -1,7 +1,7 @@
 div#content 
   h1.text-center  All articles
 
-  div ng-repeat="post in posts.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))"
+  div ng-repeat="post in (filtered = (posts | filter:query)).slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))"
     div.cont-block.col-lg-6
       div.cover
         
@@ -17,5 +17,7 @@ div#content
         div.foot
           p ng-bind="post.created_at | date: 'hh:mm a yyyy г.'"
 
+  div.col-lg-12.col-md-12.col-sm-12
+    pre Найдено : {{filtered.length}} / {{posts.length}}
+    <ul uib-pagination total-items="posts.length" ng-model="currentPage" items-per-page="itemsPerPage"  on-select-page="setPage(page)" ng-change="pageChanged()"></ul>
 
-  <ul uib-pagination total-items="posts.length" ng-model="currentPage" items-per-page="itemsPerPage"  on-select-page="setPage(page)" ng-change="pageChanged()"></ul>

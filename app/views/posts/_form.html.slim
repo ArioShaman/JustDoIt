@@ -2,7 +2,11 @@ div#form-cont
 	= form_for Post.new do |f|
 		  .form-group
 		    = f.label :title
-		    = f.text_field :title, class: "form-control"
+		    = f.text_field :title, class: "form-control" 
+
+		  <p class="help-block" ng-if="f.title.$invalid">
+		  	<span ng-if="f.title.$error.required">Title is required</span>
+		  </p>
 		  .form-group
 		    = f.label :image
 		    = f.text_field :image, class: "form-control"

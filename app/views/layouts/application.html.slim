@@ -14,7 +14,9 @@ html ng-app="app"
           div.right ui-sref-active="active"
             a ui-sref="new_post_path"
               div.create  Create article
-          input.m-search type="text" ng-model="search" placeholder="Поиск"
+
+          input.m-search type="text" placeholder="Search" ng-model="query" ng-change="apiSearch()""
+ 
 
     ui-view
     

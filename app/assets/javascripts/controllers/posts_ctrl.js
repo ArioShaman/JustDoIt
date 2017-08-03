@@ -6,7 +6,7 @@ app.controller('PostsCtrl', ['$log','$scope','Post', 'action','$stateParams', fu
       $scope.posts = Post.query();
       
       $scope.currentPage = 1;
-      $scope.itemsPerPage = 2;
+      $scope.itemsPerPage = 4;
       $scope.maxSize = 5; 
       $scope.totalItems = 6;
 

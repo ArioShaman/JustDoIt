@@ -27,8 +27,9 @@ gem 'faker'
 gem 'angular-ui-bootstrap-rails'
 gem "active_model_serializers", '0.9.3'
 
-gem 'will_paginate', '~> 3.1.1'
-gem 'ng_will_paginate'
+#gem 'will_paginate', '~> 3.1.1'
+#gem 'ng_will_paginate'
+
 group :development, :test do
   gem 'byebug'
 end

@@ -5,12 +5,16 @@ class PostsController < ApplicationController
 
   def index
     #@posts = Post.all.paginate(:page => params[:page], :per_page => 4) 
-    @posts = Post.all
+    #if params[:query].present?
+      #@Posts = Post.search(params[:query])
+    #else
+    @posts = Post.all.order("created_at DESC")
     respond_to do |format|
       format.html { render :index }
       format.json { render json: @posts}#,each_serializer: PostsSerializer}
     end
   end
+
 
   def show
     respond_to do |format|
