@@ -2,15 +2,23 @@ html ng-app="app"
   head
     title Blog
     base href="/"
-    = stylesheet_link_tag 'application'
+    = stylesheet_link_tag 'application',media: "all","data-turbolinks-track" => true
+    
   body
-    .container
-      .navbar.navbar-default
-        .container-fluid
-          ul.nav.navbar-nav
-            li ui-sref-active="active"
-              a ui-sref="posts_path" All posts
-            li ui-sref-active="active"
-              a ui-sref="new_post_path" New post
-      ui-view
-    = javascript_include_tag 'application'
+    nav#nav
+      .container-fluid
+        
+          div.link-im ui-sref-active="active"
+            a ui-sref="posts_path"
+              = image_tag("logo.svg")
+          div.right ui-sref-active="active"
+            a ui-sref="new_post_path"
+              div.create  Create article
+          input.m-search type="text" ng-model="search" placeholder="Поиск"
+
+    ui-view
+    
+  = javascript_include_tag 'application'
+
+  #sidebar
+  

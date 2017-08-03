@@ -8,9 +8,10 @@
 = require oxymoron
 = require_self
 = require_tree ./controllers
+= require angular-ui-bootstrap
 */
 
-var app = angular.module("app", ['ui.router', 'oxymoron']);
+var app = angular.module("app", ['ui.bootstrap','ui.router', 'oxymoron']);
 
 app.config(['$stateProvider', function ($stateProvider) {
   $stateProvider.rails()

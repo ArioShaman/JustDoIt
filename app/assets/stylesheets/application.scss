@@ -6,12 +6,154 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+a{
+	text-decoration: none !important;
+}
 .rails-errors {
-  color: red;
-  font-size: 12px;
+	color: red;
+	font-size: 12px;
 }
 
 .w1 {
   width: 1px;
   white-space: nowrap
+}
+
+#nav{
+	height: 50px;
+	width: 100%;
+	background-color: #1C1717;
+	.create{
+		position: relative;
+		height: 25px;
+		width: 100px;
+		background-color: orange;
+		top: -3px;
+		text-align: center;
+		color: white;
+		font-weight: bold;
+		&:hover{
+			color: black;
+		}
+	}
+	.link-im{
+		height: 50px;
+		width: 200px;
+		position: relative;
+
+		display: inline-block;
+	}
+
+	.link-im img{
+		position: relative;
+		height: auto;
+	}
+	.link-im:hover{
+		background-color: rgba(0,0,0,0);
+	}
+	.right{
+		position: relative;
+		display: inline-block;
+		margin-left: calc(100% - 550px);
+	}
+	.m-search{
+		width: 200px;
+		border-radius: 0px;
+	}
+}
+#sidebar{
+	display: inline-block;
+	float: right; 
+	height: 100%;
+	width: 20%;
+	height: 800px;
+	margin-top: 25px;
+	margin-right: 25px;
+	background-color: #CFC9C4;
+}
+#content{
+	display: inline-block;
+	width: 70%;
+	margin-left: 75px;
+	.cont-block{
+		margin-top: 25px;
+	}
+
+	.cont-block:hover .desc{
+		background-color: #E1DBDB;
+	}
+	.cover{
+		height: 200px;
+		width: auto;
+		background-color: gray;
+
+		img{
+			height: 200px;
+			width: 100%;
+		}
+	}
+	.back{
+			top: 0px;
+			z-index: 100;
+			position: absolute;
+			height: 0px;
+			width: calc(100% - 29px);
+			background-color: rgba(0,0,0,0.8);
+		}
+
+	.cover:hover .back{
+		height: 200px;
+		cursor: pointer;
+	}
+	.desc{
+		margin-top:-20px;
+		height: 200px;
+
+		a{
+			text-decoration: none !important;
+		}
+		a{
+			h3:hover{
+				color:#F0770A;
+			}
+		}
+		h3{
+			padding-top: 3px;
+			color: #1C1717;
+
+		}
+	}
+	.desc-text{
+		height: 140px;
+		padding: 10 0px 5px 10px;
+	}
+	.foot{
+		height: 30px;
+		p{
+			float: right;
+			margin-right: 15px;
+		}
+	}
+}
+
+#show{
+	display: inline-block;
+	width: 60%;
+	margin-left: 5%;
+	.show-img{
+		position: relative;
+		width: 100%;
+	}
+	.content{
+		padding-top: 15px;
+		padding-left: 25px;
+	}
+}
+#form-cont{
+	display: inline-block;
+	width: 60%;
+	margin-left: 5%;
+
+	.my-select{
+	}
 }

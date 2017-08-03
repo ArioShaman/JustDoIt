@@ -11,13 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160509210203) do
+ActiveRecord::Schema.define(version: 20170728221407) do
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "posts", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.text     "content"
+    t.string   "image"
+    t.integer  "categories_id"
+    t.integer  "art_tags_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
+
+  add_index "posts", ["art_tags_id"], name: "index_posts_on_art_tags_id"
+  add_index "posts", ["content"], name: "index_posts_on_content", unique: true
+  add_index "posts", ["description"], name: "index_posts_on_description", unique: true
+  add_index "posts", ["title"], name: "index_posts_on_title", unique: true
 
 end

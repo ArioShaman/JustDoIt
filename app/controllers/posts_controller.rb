@@ -1,12 +1,16 @@
+
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+
 
   def index
     respond_to do |format|
       format.html
       format.json {
+        #@posts = Post.all.paginate(:page => params[:page], :per_page => 4) 
         @posts = Post.all
-        render json: @posts
+        render json: @posts.to_json
+        #render json: @posts,each_serializer: PostsSerializer
       }
     end
   end
@@ -66,6 +70,6 @@ class PostsController < ApplicationController
     end
 
     def post_params
-      params.require(:post).permit(:title, :description)
+      params.require(:post).permit(:title, :description, :content, :categories_id, :image)
     end
 end

@@ -1,13 +1,23 @@
-app.controller('PostsCtrl', ['Post', 'action', function (Post, action) {
+app.controller('PostsCtrl', ['$scope','Post', 'action','$stateParams', function ($scope, Post, action, $stateParams) {
     var ctrl = this;
     // Код отработает только для  '/posts'
-    action('index', function(){
-      ctrl.posts = Post.query();
+    action('index', function(response){
+
+      $scope.posts = Post.query();
+      console.log(angular.fromJson($scope.posts));
+      console.log(Object.keys(angular.fromJson($scope.posts)).length)
+      $scope.currentPage = 1;
+      $scope.itemsPerPage = 4;
+      $scope.maxSize = 5; 
+      
+      
     });
 
     // Вызовется для паттерна '/posts/:id'
     action('show', function (params){
       ctrl.post = Post.get({id: params.id});
+      $scope.par = params.id;
+      $scope.posts = Post.query({page: params.page});
     });
 
     // Только для '/posts/new'
