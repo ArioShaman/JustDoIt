@@ -8,7 +8,7 @@ class PostsController < ApplicationController
     @posts = Post.all
     respond_to do |format|
       format.html { render :index }
-      format.json { render json: @posts,each_serializer: PostsSerializer}
+      format.json { render json: @posts}#,each_serializer: PostsSerializer}
     end
   end
 

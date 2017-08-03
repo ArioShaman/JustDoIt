@@ -4,9 +4,7 @@ app.controller('PostsCtrl', ['$log','$scope','Post', 'action','$stateParams', fu
     action('index', function(response){
 
       $scope.posts = Post.query();
-      $scope.data = $scope.posts
-      console.log(angular.fromJson($scope.posts));
-      console.log(Object.keys(angular.fromJson($scope.posts)).length)
+      
       $scope.currentPage = 1;
       $scope.itemsPerPage = 2;
       $scope.maxSize = 5; 
@@ -25,8 +23,6 @@ app.controller('PostsCtrl', ['$log','$scope','Post', 'action','$stateParams', fu
     // Вызовется для паттерна '/posts/:id'
     action('show', function (params){
       ctrl.post = Post.get({id: params.id});
-      $scope.par = params.id;
-      $scope.posts = Post.query({page: params.page});
     });
 
     // Только для '/posts/new'

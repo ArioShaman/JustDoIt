@@ -1,6 +1,5 @@
 div#show
 	h1.text-center ng-bind="ctrl.post.title"
-	h1 ng-bind="par"
 
 	img.show-img ng-src="{{ctrl.post.image}}"
 
@@ -10,6 +9,3 @@ div#show
 	a.btn.btn-primary ui-sref="edit_post_path(post.post)" Edit
 	|&nbsp;
 	a.btn.btn-danger ng-click="ctrl.destroy(ctrl.post)" Destroy
-
-	div ng-repeat="post in posts"
-		h3 ng-bind="post.title"
