@@ -4,14 +4,11 @@ class PostsController < ApplicationController
 
 
   def index
+    #@posts = Post.all.paginate(:page => params[:page], :per_page => 4) 
+    @posts = Post.all
     respond_to do |format|
-      format.html
-      format.json {
-        #@posts = Post.all.paginate(:page => params[:page], :per_page => 4) 
-        @posts = Post.all
-        render json: @posts.to_json
-        #render json: @posts,each_serializer: PostsSerializer
-      }
+      format.html { render :index }
+      format.json { render json: @posts,each_serializer: PostsSerializer}
     end
   end
 
