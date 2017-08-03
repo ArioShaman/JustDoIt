@@ -9,6 +9,7 @@
 = require_self
 = require_tree ./controllers
 = require angular-ui-bootstrap
+= require angular-ui-bootstrap-tpls
 */
 
 var app = angular.module("app", ['ui.bootstrap','ui.router', 'oxymoron']);
