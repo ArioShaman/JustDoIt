@@ -1,4 +1,7 @@
 div#show
+	h3
+		a ui-sref="posts_path" Main/
+		span article {{ctrl.post.id}}
 	h1.text-center ng-bind="ctrl.post.title"
 
 	img.show-img ng-src="{{ctrl.post.image}}"

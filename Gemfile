@@ -24,6 +24,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'kaminari'
 gem 'faker'
 
+#gem 'angular-rails-templates'
 gem 'angular-ui-bootstrap-rails'
 gem "active_model_serializers", '0.9.3'
 
