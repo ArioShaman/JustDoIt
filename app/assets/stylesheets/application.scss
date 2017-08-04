@@ -158,6 +158,40 @@ a{
 	width: 60%;
 	margin-left: 5%;
 
-	.my-select{
+	.f_width{
+		width: 300px !important;
+		display: inline-block;
+	}
+	.f-add-btn{
+		padding-top: 5px;
+		text-align: center;
+		color: pointer;
+		display: inline-block;
+		height: 33px;
+		width: 33px;
+		background-color: #419BFB;
+		border: 1px solid #C5C9CE;
+		border-radius: 3px;
+	}
+	.f-add-btn:hovver{
+		cursor: pointer;
+	}
+	.tag{
+		display: inline-block;
+		height: 20px;
+		padding-left: 12px;
+		padding-right: 20px;
+		border-radius: 3px;
+		margin-left: 10px;
+		float:left;
+		background-color: #419BFB;
+		margin-top: 10px;
+	}
+	.f-btn{
+		margin-top: 50px;
+		float: right;
+	}
+	.tags-group{
+		margin-left: 15px;
 	}
 }

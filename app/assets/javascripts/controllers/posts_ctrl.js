@@ -1,4 +1,4 @@
-app.controller('PostsCtrl', ['$log','$scope','Post', 'action','$stateParams','orderByFilter', function ($log,$scope, Post, action, $stateParams,orderBy) {
+app.controller('PostsCtrl', ['$log','$scope','Post','action','$stateParams','orderByFilter','$http', function ($log,$scope, Post, action, $stateParams,orderBy,$http) {
     var ctrl = this;
     // Код отработает только для  '/posts'
     action('index', function(response){
@@ -21,21 +21,11 @@ app.controller('PostsCtrl', ['$log','$scope','Post', 'action','$stateParams','or
      
       $scope.propertyName = 'created_at';
       $scope.reverse = true;
-      //$scope.posts = orderBy(posts, $scope.propertyName, $scope.reverse);
-
-      
-      $scope.OrderF = [{
-        field: "content",
-        title: "Content"
-      }, {
-        field: "category_id",
-        title: "Category"
-      }];
 
       $scope.hasReversed = function(propertyName) {
         //$scope.reverse = !$scope.reverse;
         $scope.propertyName = propertyName 
-        $scope.reverse = ($scope.propertyName === propertyName) ? $scope.reverse : !$scope.reverse;
+        $scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
         $scope.currentPage = 1;
         console.log(propertyName,' : ',$scope.reverse)
       };
@@ -49,6 +39,14 @@ app.controller('PostsCtrl', ['$log','$scope','Post', 'action','$stateParams','or
     // Только для '/posts/new'
     action('new', function(){
       ctrl.post = Post.new();
+      $scope.tags = [];
+      $scope.addTag = function(tag){
+        $scope.tags.push(tag);
+        //$scope.tag = Tag.new();
+        //$scope.tag.body = tag;
+        //ctrl.tag = Tag.new();//{body: tag}).create();
+        //Tag.save({'body' : tag});
+      };
       // Присваивание каллбека создания, который будет вызван автоматически при сабмите формы. См. ниже.
       ctrl.save = Post.create;
     });
