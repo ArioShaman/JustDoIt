@@ -1,4 +1,4 @@
-app.controller('PostsCtrl', ['$log','$scope','Post', 'action','$stateParams', function ($log,$scope, Post, action, $stateParams) {
+app.controller('PostsCtrl', ['$log','$scope','Post', 'action','$stateParams','orderByFilter', function ($log,$scope, Post, action, $stateParams,orderBy) {
     var ctrl = this;
     // Код отработает только для  '/posts'
     action('index', function(response){
@@ -18,6 +18,15 @@ app.controller('PostsCtrl', ['$log','$scope','Post', 'action','$stateParams', fu
         console.log('Page changed to: ' + $scope.currentPage);
       };
      
+      $scope.propertyName = 'title';
+      $scope.reverse = true;
+      //$scope.posts = orderBy(posts, $scope.propertyName, $scope.reverse);
+
+      $scope.sortBy = function(propertyName) {
+        $scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
+        $scope.propertyName = propertyName;
+        //$scope.posts = orderBy($scope.posts, $scope.propertyName, $scope.reverse);
+      };
     });
 
     // Вызовется для паттерна '/posts/:id'

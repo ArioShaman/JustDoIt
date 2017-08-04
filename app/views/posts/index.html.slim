@@ -1,7 +1,9 @@
 div#content 
   h1.text-center  All articles
+  button ng-click="sortBy('content')" Content 
+  button ng-click="sortBy('category_id')" Category
 
-  div ng-repeat="post in (filtered = (posts | filter:query)).slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))"
+  div ng-repeat="post in (filtered = (posts | filter:query | orderBy:propertyName:reverse)).slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))"
     div.cont-block.col-lg-6
       div.cover
         
