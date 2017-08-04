@@ -17,15 +17,27 @@ app.controller('PostsCtrl', ['$log','$scope','Post', 'action','$stateParams','or
       $scope.pageChanged = function() {
         console.log('Page changed to: ' + $scope.currentPage);
       };
+  
      
-      $scope.propertyName = 'title';
+      $scope.propertyName = 'created_at';
       $scope.reverse = true;
       //$scope.posts = orderBy(posts, $scope.propertyName, $scope.reverse);
 
-      $scope.sortBy = function(propertyName) {
-        $scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
-        $scope.propertyName = propertyName;
-        //$scope.posts = orderBy($scope.posts, $scope.propertyName, $scope.reverse);
+      
+      $scope.OrderF = [{
+        field: "content",
+        title: "Content"
+      }, {
+        field: "category_id",
+        title: "Category"
+      }];
+
+      $scope.hasReversed = function(propertyName) {
+        //$scope.reverse = !$scope.reverse;
+        $scope.propertyName = propertyName 
+        $scope.reverse = ($scope.propertyName === propertyName) ? $scope.reverse : !$scope.reverse;
+        $scope.currentPage = 1;
+        console.log(propertyName,' : ',$scope.reverse)
       };
     });
 

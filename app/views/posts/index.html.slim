@@ -1,7 +1,18 @@
 div#content 
-  h1.text-center  All articles
-  button ng-click="sortBy('content')" Content 
-  button ng-click="sortBy('category_id')" Category
+  div ng-include='"templ.html.slim"'
+
+  pre
+    div.col-lg-3
+      <select class="form-control" ng-model="propertyName" class="select required" name="filter" id="filter">
+          <option ng-click="hasReversed('created_at')" value="created_at">Date</option>
+          <option ng-click="hasReversed('title')">Title</option>
+          <option ng-click="hasReversed('content')" value="content">Content</option>
+          <option ng-click="hasReversed('category_id')" value="category_id">Category</option>
+      </select>
+    div.col-lg-9
+      p.inf-text You can select value more than once than reverse list of results
+
+  
 
   div ng-repeat="post in (filtered = (posts | filter:query | orderBy:propertyName:reverse)).slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))"
     div.cont-block.col-lg-6
@@ -21,5 +32,5 @@ div#content
 
   div.col-lg-12.col-md-12.col-sm-12
     pre Найдено : {{filtered.length}} / {{posts.length}}
-    <ul uib-pagination total-items="posts.length" ng-model="currentPage" items-per-page="itemsPerPage"  on-select-page="setPage(page)" ng-change="pageChanged()"></ul>
+    <ul uib-pagination total-items="filtered.length" ng-model="currentPage" items-per-page="itemsPerPage"  on-select-page="setPage(page)" ng-change="pageChanged()"></ul>
 
