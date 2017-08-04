@@ -1,4 +1,4 @@
-app.controller('PostsCtrl', ['$log','$scope','Post','action','$stateParams','orderByFilter','$http', function ($log,$scope, Post, action, $stateParams,orderBy,$http) {
+app.controller('PostsCtrl', ['$log','$scope','$location','Post','Category','Tag','Tagging','action','$stateParams','orderByFilter','$http', function ($log,$scope,$location, Post, Category, Tag,Tagging, action, $stateParams,orderBy,$http) {
     var ctrl = this;
     // Код отработает только для  '/posts'
     action('index', function(response){
@@ -34,6 +34,8 @@ app.controller('PostsCtrl', ['$log','$scope','Post','action','$stateParams','ord
     // Вызовется для паттерна '/posts/:id'
     action('show', function (params){
       ctrl.post = Post.get({id: params.id});
+      $scope.tags = Tagging.query({post_id: params.id});
+      console.log($scope.tags);
     });
 
     // Только для '/posts/new'

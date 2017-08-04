@@ -20,7 +20,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.html
       format.json {
-        render json: @post
+        render json:  @post
       }
     end
   end
@@ -29,7 +29,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.html
       format.json {
-        render json: {post: Post.new, tag: Tag.new}
+        render json: {post: Post.new}
       }
     end
   end

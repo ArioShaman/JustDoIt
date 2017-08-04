@@ -15,5 +15,6 @@
 var app = angular.module("app", ['ui.bootstrap','ui.router', 'oxymoron']);
 
 app.config(['$stateProvider', function ($stateProvider) {
-  $stateProvider.rails()
+	$stateProvider.rails()
+
 }])

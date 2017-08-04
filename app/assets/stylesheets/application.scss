@@ -152,6 +152,23 @@ a{
 		padding-top: 15px;
 		padding-left: 25px;
 	}
+	.tag{
+		float: left;
+		height: 20px;
+		padding-left: 12px;
+		padding-right: 20px;
+		border-radius: 3px;
+		margin-left: 10px;
+		color: white;
+		font-weight: 600;
+	
+		background-color: #419BFB;
+		margin-top: 10px;
+	}
+	.f-btn{
+		margin-top: 50px;
+		float: none;
+	}
 }
 #form-cont{
 	display: inline-block;

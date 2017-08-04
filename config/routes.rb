@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   	resources :categories
+    resources :tags
+    resources :taggings
   	root to: "posts#index"
   	resources :posts
   	#resources :posts do
