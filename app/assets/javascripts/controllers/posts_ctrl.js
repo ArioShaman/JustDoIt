@@ -1,6 +1,5 @@
 app.controller('PostsCtrl', ['$log','$scope','$location','Post','Category','Tag','Tagging','action','$stateParams','orderByFilter','$http', function ($log,$scope,$location, Post, Category, Tag,Tagging, action, $stateParams,orderBy,$http) {
     var ctrl = this;
-    // Код отработает только для  '/posts'
     action('index', function(response){
 
       $scope.posts = Post.query();
@@ -23,22 +22,19 @@ app.controller('PostsCtrl', ['$log','$scope','$location','Post','Category','Tag'
       $scope.reverse = true;
 
       $scope.hasReversed = function(propertyName) {
-        //$scope.reverse = !$scope.reverse;
         $scope.propertyName = propertyName 
         $scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
         $scope.currentPage = 1;
-        console.log(propertyName,' : ',$scope.reverse)
+        //console.log(propertyName,' : ',$scope.reverse)
       };
     });
 
-    // Вызовется для паттерна '/posts/:id'
     action('show', function (params){
       ctrl.post = Post.get({id: params.id});
       $scope.tags = Tagging.query({post_id: params.id});
       console.log($scope.tags);
     });
 
-    // Только для '/posts/new'
     action('new', function(){
       ctrl.post = Post.new();
       $scope.tags = [];
@@ -48,12 +44,17 @@ app.controller('PostsCtrl', ['$log','$scope','$location','Post','Category','Tag'
         //$scope.tag.body = tag;
         //ctrl.tag = Tag.new();//{body: tag}).create();
         //Tag.save({'body' : tag});
+        Tag.create({body: tag});
+        taG = Tag.get({body: tag});
+        Tagging.create({
+          post_id: post.id,
+          tag_id: taG.id
+        });
       };
       // Присваивание каллбека создания, который будет вызван автоматически при сабмите формы. См. ниже.
       ctrl.save = Post.create;
     });
 
-    // Для паттерна '/posts/:id/edit'
     action('edit', function (params){
       ctrl.post = Post.edit({id: params.id});
       // Аналогичное присваивание для каллбека обновления
