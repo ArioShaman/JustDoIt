@@ -78,7 +78,6 @@ a{
 	.cont-block{
 		margin-top: 25px;
 	}
-
 	.inf-text{
 		padding-top: 7px;
 		color: #3A58FD;
@@ -89,15 +88,31 @@ a{
 	.cover{
 		height: 200px;
 		width: auto;
-		background-color: gray;
-
+		top: 0px;
+		margin-top: 0px;
+		bottom: 0px;
 		img{
 			height: 200px;
 			width: 100%;
 		}
 	}
+	.category-cont{
+			margin-top: 10px;
+			position: absolute;
+			height: 20px;
+			padding-left: 15px;
+			padding-right: 25px;
+			border-radius: 4px;
+			background-color: rgba(0,0,0,0.5);
+			z-index: 1000;
+			margin-left: 20px;
+			color: #F7AB08;
+			font-weight: 600;
+			border: 2px solid #1D1C1B;
+			transition: 0.5s;
+		}
 	.back{
-			top: 0px;
+			top: 10px;
 			z-index: 100;
 			position: absolute;
 			height: 0px;
@@ -105,7 +120,17 @@ a{
 			background-color: rgba(0,0,0,0.8);
 		}
 
+	.cover:hover .category-cont{
+		background-color: white;
+	}
+	.category-cont:hover{
+		background-color: white;
+		border: 2px solid #F7AB08;
+		cursor: pointer;
+	}
+
 	.cover:hover .back{
+		top: 0px;
 		height: 200px;
 		cursor: pointer;
 	}

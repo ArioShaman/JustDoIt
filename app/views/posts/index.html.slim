@@ -14,10 +14,13 @@ div#content
 
   
 
-  div ng-repeat="post in (filtered = (posts | filter:query | orderBy:propertyName:reverse)).slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))"
+  div ng-repeat="post in (filtered = (posts | filter:query | orderBy:propertyName:reverse | filter:{categories_id: filtCat})).slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))"
     div.cont-block.col-lg-6
       div.cover
         
+        div ng-repeat="cat in cats"
+            div.category-cont ng-if="proof(cat.id, post.categories_id,cat)" ng-click="hasCat(cat.id)" {{cat.body}}
+
         img ng-src="{{post.image}}"
         a ui-sref="post_path(post)"
           div.back
