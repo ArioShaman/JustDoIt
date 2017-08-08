@@ -19,7 +19,7 @@ div#content
       div.cover
         
         div ng-repeat="cat in cats"
-            div.category-cont ng-if="proof(cat.id, post.categories_id,cat)" ng-click="hasCat(cat.id)" {{cat.body}}
+            div.category-cont ng-if="prooF(cat.id, post.categories_id,cat)" ng-click="hasCat(cat.id)" {{cat.body}}
 
         img ng-src="{{post.image}}"
         a ui-sref="post_path(post)"

@@ -52,13 +52,7 @@ app.controller('PostsCtrl', ['$http','$log','$scope','$location','Post','Categor
         }else{
         }
       };
-      $scope.proof = function(mod_id,cat_id,cat){
-        if(mod_id == cat_id){
-          return true;
-        }else{
-          return false;
-        }
-      };
+      
     });
 
     action('show', function (params,response){
@@ -68,10 +62,14 @@ app.controller('PostsCtrl', ['$http','$log','$scope','$location','Post','Categor
       $scope.text = "text";
       $scope.tags = Tag.query();
       $scope.taggings = Tagging.query();
-      $scope.show =  function(tag_id){
-        //return Tag.receive({body: "qwe"});
-        
-        };
+      $scope.prooF = function(mod_id,tag_id,tag){
+        if(mod_id == tag_id){
+          console.log(tag);
+          return tag;
+        }else{
+        }
+      };
+      
     });
 
     action('new', function(){
