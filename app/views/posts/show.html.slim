@@ -10,11 +10,7 @@ div#show
 		p ng-bind="ctrl.post.description"
 
 	.form-group
-		  	div.tags-group
-		  		div ng-repeat="tager in (filtered= (taggings | filter: { post_id: post_id} )) track by $index"
-		  			div.tag ng-bind="tager.tag_id" 
-		  			div ng-repeat="tag in (fil=(tags | filter: {id: tager.tag_id}))"
-		  				div.tag ng-bind="tag.body"
+		  	
 
 	
 	div.f-btn

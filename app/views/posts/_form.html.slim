@@ -33,7 +33,9 @@ div#form-cont
 		  		a.f-add-btn ng-click="addTag(tag)" href="" +
 
 		  	
-		  	
+		  	div.tags-group
+		  		div ng-repeat="tag in tags track by $index" 
+		  			div.tag ng-bind="tag.body"
 		 
 		.form-group.buts
 			= f.submit "Save", class: "btn btn-primary f-btn"
