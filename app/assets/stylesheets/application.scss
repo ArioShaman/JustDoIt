@@ -169,6 +169,23 @@ a{
 		margin-top: 50px;
 		float: none;
 	}
+	.f-add-btn{
+		padding-top: 5px;
+		text-align: center;
+		color: pointer;
+		display: inline-block;
+		height: 33px;
+		width: 33px;
+		background-color: #419BFB;
+		border: 1px solid #C5C9CE;
+		border-radius: 3px;
+	}
+	.f-add-btn:hovver{
+		cursor: pointer;
+	}
+	.tags-group{
+		margin-left: 15px;
+	}
 }
 #form-cont{
 	display: inline-block;
@@ -203,6 +220,7 @@ a{
 		float:left;
 		background-color: #419BFB;
 		margin-top: 10px;
+		position: relative;
 	}
 	.f-btn{
 		margin-top: 50px;
@@ -210,5 +228,11 @@ a{
 	}
 	.tags-group{
 		margin-left: 15px;
+		height: auto;
+		position: relative;
+	}
+	.buts{
+		margin-top: 50px;
+		position: relative;
 	}
 }

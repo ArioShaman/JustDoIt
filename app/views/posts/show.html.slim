@@ -9,10 +9,13 @@ div#show
 	div.content
 		p ng-bind="ctrl.post.description"
 
-	h1 Tags:
-	div.col-lg-12
-		div ng-repeat="tag in tags"
-			div.tag ng-bind="tag.body"
+	.form-group
+		  	div.tags-group
+		  		div ng-repeat="tager in (filtered= (taggings | filter: { post_id: post_id} )) track by $index"
+		  			div.tag ng-bind="tager.tag_id" 
+		  			div ng-repeat="tag in (fil=(tags | filter: {id: tager.tag_id}))"
+		  				div.tag ng-bind="tag.body"
+
 	
 	div.f-btn
 		a.btn.btn-primary ui-sref="edit_post_path(ctrl.post)" Edit

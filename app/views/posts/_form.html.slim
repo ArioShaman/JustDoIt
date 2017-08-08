@@ -5,11 +5,12 @@ div#form-cont
 		    = f.text_field :title, class: "form-control" 
 
 		.form-group
-		    = f.label :image
+		    = f.label :image 
+		    	url Image url
 		    = f.text_field :image, class: "form-control"
 
 		.form-group
-		    = f.label :description
+		    = f.label :description 
 		    = f.text_field :description, class: "form-control"
 
 
@@ -31,11 +32,10 @@ div#form-cont
 		  		input.form-control.f_width ng-model="tag" name="tags" type="text" 	
 		  		a.f-add-btn ng-click="addTag(tag)" href="" +
 
-		  	div.tags-group
-		  		div ng-repeat="tag in tags track by $index" 
-		  			div.tag ng-bind="tag"
+		  	
+		  	
 		 
-		.form-group
+		.form-group.buts
 			= f.submit "Save", class: "btn btn-primary f-btn"
 			| &nbsp;
 			a.btn.btn-danger ng-click="ctrl.destroy(ctrl.post)" ng-if="ctrl.post.id" Destroy

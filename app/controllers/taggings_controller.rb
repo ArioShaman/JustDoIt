@@ -8,21 +8,21 @@ class TaggingsController < ApplicationController
 	end
 
 	def create
-    	@tagging = Tagging.new tagging_params
-    	if @tag.save
-    		render json: {tag: @tagging}
+    	@tagging = Tagging.new(tagging_params)
+    	if @tagging.save
+    		render json: {tag: @tagging, msg: "Tagging is created"}
 		else
-			render json: {errors: @tagging.errors, msg: @tagging.errors.full_messages.join(', ')}, status: 422
+			render json: {errors: "errors", msg: "Not created associate"}, status: 422
 		end
 	end
 
 	def show
-	    respond_to do |format|
-	      format.html
-	      format.json {
-	        render json:  @tagging
-	      }
-	    end
+	   #respond_to do |format|
+	   #  format.html
+	   #  format.json {
+	   #    render json:  @tagging
+	   #  }
+	   #end
   	end
 
   	def tagging_params

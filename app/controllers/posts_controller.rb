@@ -4,10 +4,6 @@ class PostsController < ApplicationController
 
 
   def index
-    #@posts = Post.all.paginate(:page => params[:page], :per_page => 4) 
-    #if params[:query].present?
-      #@Posts = Post.search(params[:query])
-    #else
     @posts = Post.all.order("created_at DESC")
     respond_to do |format|
       format.html { render :index }
@@ -64,6 +60,7 @@ class PostsController < ApplicationController
     @post.destroy
     render json: {msg: "Post successfully deleted", redirect_to: "posts_path"}
   end
+
 
   private
     def set_post

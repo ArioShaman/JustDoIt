@@ -1,4 +1,4 @@
-app.controller('PostsCtrl', ['$log','$scope','$location','Post','Category','Tag','Tagging','action','$stateParams','orderByFilter','$http', function ($log,$scope,$location, Post, Category, Tag,Tagging, action, $stateParams,orderBy,$http) {
+app.controller('PostsCtrl', ['$http','$log','$scope','$location','Post','Category','Tag','Tagging','action','$stateParams','orderByFilter','$http', function ($http,$log,$scope,$location, Post, Category, Tag,Tagging, action, $stateParams,orderBy,$http) {
     var ctrl = this;
     action('index', function(response){
 
@@ -25,14 +25,20 @@ app.controller('PostsCtrl', ['$log','$scope','$location','Post','Category','Tag'
         $scope.propertyName = propertyName 
         $scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
         $scope.currentPage = 1;
-        //console.log(propertyName,' : ',$scope.reverse)
       };
     });
 
-    action('show', function (params){
+    action('show', function (params,response){
       ctrl.post = Post.get({id: params.id});
-      $scope.tags = Tagging.query({post_id: params.id});
-      console.log($scope.tags);
+      $scope.post_id = params.id;
+
+      $scope.text = "text";
+      $scope.tags = Tag.query();
+      $scope.taggings = Tagging.query();
+      $scope.show =  function(tag_id){
+        //return Tag.receive({body: "qwe"});
+        
+        };
     });
 
     action('new', function(){
@@ -40,17 +46,16 @@ app.controller('PostsCtrl', ['$log','$scope','$location','Post','Category','Tag'
       $scope.tags = [];
       $scope.addTag = function(tag){
         $scope.tags.push(tag);
-        //$scope.tag = Tag.new();
-        //$scope.tag.body = tag;
-        //ctrl.tag = Tag.new();//{body: tag}).create();
-        //Tag.save({'body' : tag});
         Tag.create({body: tag});
-        taG = Tag.get({body: tag});
-        Tagging.create({
-          post_id: post.id,
-          tag_id: taG.id
-        });
+        //$scope.tage= Tag.receive({body: tag});//not working
+        //console.log($scope.tage);
+        //Tagging.create({
+          //post_id: 10,
+          //tag_id: 3
+        //});
+        
       };
+      
       // Присваивание каллбека создания, который будет вызван автоматически при сабмите формы. См. ниже.
       ctrl.save = Post.create;
     });
@@ -76,10 +81,16 @@ app.controller('PostsCtrl', ['$log','$scope','$location','Post','Category','Tag'
       }
     })
 
+    action(['index','show','new'], function(){
+      
+    })
+
     // Так же внутри ресурса routes.rb можно создать свой кастомный метод. Вызовется для: '/posts/some_method'
     action('some_method', function(){
       //
     })
+
+
 
     // etc
   }])

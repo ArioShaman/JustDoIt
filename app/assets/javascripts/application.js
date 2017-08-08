@@ -15,6 +15,13 @@
 var app = angular.module("app", ['ui.bootstrap','ui.router', 'oxymoron']);
 
 app.config(['$stateProvider', function ($stateProvider) {
-	$stateProvider.rails()
+ 	$stateProvider.rails()
+    
 
-}])
+}]);
+//.factory('Tag', ['$resource', 'resourceDecorator', function ($resource, resourceDecorator) {
+//      return resourceDecorator($resource('/receive/:body.json', {"body":"@id"},{"receive":{"method":"GET","url":"/receive/body:.json"}}));
+//}]);
+
+
+
