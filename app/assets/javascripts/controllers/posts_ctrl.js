@@ -74,7 +74,7 @@ app.controller('PostsCtrl', ['$http','$log','$scope','$location','Post','Categor
       ctrl.post = Post.new();
       
       // Присваивание каллбека создания, который будет вызван автоматически при сабмите формы. См. ниже.
-      $scope.save = Post.create
+      ctrl.save = Post.create
       //consile.log($scope.save);
       
     });
