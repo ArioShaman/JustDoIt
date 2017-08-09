@@ -47,7 +47,6 @@ app.controller('PostsCtrl', ['$http','$log','$scope','$location','Post','Categor
       };
       $scope.prooF = function(mod_id,cat_id,cat){
         if(mod_id == cat_id){
-          console.log(cat);
           return cat;
         }else{
         }
@@ -58,7 +57,7 @@ app.controller('PostsCtrl', ['$http','$log','$scope','$location','Post','Categor
     action('show', function (params,response){
       ctrl.post = Post.get({id: params.id});
       $scope.post_id = params.id;
-
+      $scope.showPage = true;
       $scope.text = "text";
       $scope.tags = Tag.query();
       $scope.taggings = Tagging.query();
@@ -69,26 +68,15 @@ app.controller('PostsCtrl', ['$http','$log','$scope','$location','Post','Categor
         }else{
         }
       };
-      
     });
 
     action('new', function(){
       ctrl.post = Post.new();
-      $scope.tags = [];
-      $scope.addTag = function(tag){
-        $scope.tags.push(tag);
-        Tag.create({body: tag});
-        //$scope.tage= Tag.receive({body: tag});//not working
-        //console.log($scope.tage);
-        //Tagging.create({
-          //post_id: 10,
-          //tag_id: 3
-        //});
-        
-      };
       
       // Присваивание каллбека создания, который будет вызван автоматически при сабмите формы. См. ниже.
-      ctrl.save = Post.create;
+      $scope.save = Post.create
+      //consile.log($scope.save);
+      
     });
 
     action('edit', function (params){

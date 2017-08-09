@@ -25,17 +25,8 @@ div#form-cont
 		  	= f.select(:categories_id) do
 				= Category.all.each do |c|
 					= content_tag(:option, c.body, value: c.id, class: "")
-
-		.form-group
-		  	label Add tag
-		  	div
-		  		input.form-control.f_width ng-model="tag" name="tags" type="text" 	
-		  		a.f-add-btn ng-click="addTag(tag)" href="" +
-
 		  	
-		  	div.tags-group
-		  		div ng-repeat="tag in tags track by $index" 
-		  			div.tag ng-bind="tag.body"
+		  	
 		 
 		.form-group.buts
 			= f.submit "Save", class: "btn btn-primary f-btn"

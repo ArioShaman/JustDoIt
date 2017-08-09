@@ -15,6 +15,11 @@ div#show
 		div ng-repeat="tag in tags"
             div.tag ng-if="prooF(tag.id, tagging.tag_id,tag)" {{tag.body}}
 	
+
+	div ng-repeat="tagging in (filtered = (taggings | filter:{post_id: post_id}))"
+		div ng-repeat="tag in tags"
+			div.tag ng-if="prooF(tag.id, tagging.tag_id,tag)" {{tag.body}}	
+
 	div.f-btn
 		a.btn.btn-primary ui-sref="edit_post_path(ctrl.post)" Edit
 		|&nbsp;
