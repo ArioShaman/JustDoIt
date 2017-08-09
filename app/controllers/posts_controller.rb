@@ -42,8 +42,8 @@ class PostsController < ApplicationController
   def create
     @post = Post.new post_params
     if @post.save
-      return @post
-      #render json: {post: @post, msg: "Post successfully created"}
+      #return @post
+      render json: {post: @post, msg: "Post successfully created", redirect_to: "posts_path"}
     else
       render json: {errors: @post.errors, msg: @post.errors.full_messages.join('& ')}, status: 422
     end
