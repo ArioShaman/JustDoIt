@@ -7,7 +7,7 @@ div#show
 	img.show-img ng-src="{{ctrl.post.image}}"
 
 	div.content
-		p ng-bind="ctrl.post.description"
+		p ng-bind-html="ctrl.post.content"
 
 	.form-group
 		  	

@@ -1,6 +1,7 @@
 /*
  *= require oxymoron/ng-notify
  *= require_self
+ *= require editor
  */
 
 @import "bootstrap-sprockets";
@@ -80,6 +81,7 @@ a{
 #content{
 	display: inline-block;
 	width: 70%;
+	position:relative;
 	margin-left: 75px;
 	.cont-block{
 		margin-top: 25px;

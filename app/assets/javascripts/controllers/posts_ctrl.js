@@ -1,4 +1,4 @@
-app.controller('PostsCtrl', ['$http','$log','$scope','$location','Post','Category','Tag','Tagging','action','$stateParams','orderByFilter','$http', function ($http,$log,$scope,$location, Post, Category, Tag,Tagging, action, $stateParams,orderBy,$http) {
+app.controller('PostsCtrl', ['$sce','$element','$http','$log','$scope','$location','Post','Category','Tag','Tagging','action','$stateParams','orderByFilter','$http', function ($sce,$element,$http,$log,$scope,$location, Post, Category, Tag,Tagging, action, $stateParams,orderBy,$http) {
     var ctrl = this;
     action('index', function(response){
       
@@ -24,6 +24,8 @@ app.controller('PostsCtrl', ['$http','$log','$scope','$location','Post','Categor
       $scope.reverse = true;
 
       $scope.cansel = true;
+
+      
       $scope.hasReversed = function(propertyName) {
         $scope.propertyName = propertyName ;
         $scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
@@ -61,6 +63,8 @@ app.controller('PostsCtrl', ['$http','$log','$scope','$location','Post','Categor
       $scope.text = "text";
       $scope.tags = Tag.query();
       $scope.taggings = Tagging.query();
+
+      $scope.text = $sce.trustAsHtml(ctrl.post.content);
       $scope.prooF = function(mod_id,tag_id,tag){
         if(mod_id == tag_id){
           console.log(tag);
@@ -72,7 +76,8 @@ app.controller('PostsCtrl', ['$http','$log','$scope','$location','Post','Categor
 
     action('new', function(){
       ctrl.post = Post.new();
-      
+      //CKEDITOR.replace('editor1');
+
       // Присваивание каллбека создания, который будет вызван автоматически при сабмите формы. См. ниже.
       ctrl.save = Post.create
       //consile.log($scope.save);
@@ -81,13 +86,29 @@ app.controller('PostsCtrl', ['$http','$log','$scope','$location','Post','Categor
 
     action('edit', function (params){
       ctrl.post = Post.edit({id: params.id});
+      //CKEDITOR.replace('editor1');
       // Аналогичное присваивание для каллбека обновления
       ctrl.save = Post.update;
     })
 
     // Общий код. Вызовется для двух методов edit и new.
     action(['edit', 'new'], function(){
-      //
+      var ck =CKEDITOR.replace('editor1', {
+        language: 'ru',
+        uiColor: '#F7CD22'
+      });
+      ck.on('pasteState', function () {
+                $scope.$apply(function () {
+                    ctrl.post['content'] = ck.getData();
+                    console.log(ctrl.post['content']);
+                });
+            });
+
+           // ngModel.$render = function (value) {
+                //ck.setData(ngModel.$modelValue);
+                //console.log(ngModel.$modelValue);
+            //};
+      
     })
 
     action(['index', 'edit', 'show'], function () {
